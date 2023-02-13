@@ -4,6 +4,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../../../core/utils/styles.dart';
+import '../../../../../home/presentation/views/widgets/best_seller_list_view_item.dart';
+
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
 
@@ -12,12 +15,42 @@ class SearchViewBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
-        children: [
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
           CustomSearchTextField(),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            'Results',
+            style: Styles.textStyle20,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: SearchResultListView(),
+          ),
         ],
       ),
     );
   }
 }
 
+class SearchResultListView extends StatelessWidget {
+  const SearchResultListView({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      padding: EdgeInsets.zero,
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: BookListViewItem(),
+        );
+      },
+    );
+  }
+}
