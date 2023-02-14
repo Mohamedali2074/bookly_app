@@ -28,5 +28,4 @@ abstract class Styles {
     fontSize: 14,
     fontWeight: FontWeight.normal,
   );
-
 }
